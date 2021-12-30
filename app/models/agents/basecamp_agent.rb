@@ -76,11 +76,11 @@ module Agents
 
   private
     def base_url
-      "https://basecamp.com/#{URI.encode(service.options[:user_id].to_s)}/api/v1/"
+      "https://basecamp.com/#{CGI.escape(service.options[:user_id].to_s)}/api/v1/"
     end
 
     def events_url
-      base_url + "projects/#{URI.encode(interpolated[:project_id].to_s)}/events.json"
+      base_url + "projects/#{CGI.escape(interpolated[:project_id].to_s)}/events.json"
     end
 
     def projects_url
